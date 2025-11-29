@@ -1,15 +1,16 @@
-#!/usr/bin/env python
+#!/usr/bin/env uv run
 
-import httplib
+import http.client
 import sys
 
 #get http server ip
 http_server = sys.argv[1]
+
 #create a connection
-conn = httplib.HTTPConnection(http_server)
+conn = http.client.HTTPConnection(http_server)
 
 while 1:
-    cmd = raw_input('input command (ex. GET index.html): ')
+    cmd = input('input command (ex. GET index.html): ')
     cmd = cmd.split()
 
     if cmd[0] == 'exit': #tipe exit to end it

@@ -1,14 +1,14 @@
-#!/usr/bin/env python
+#!/usr/bin/env uv run
 
-from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, HTTPServer
 import os
 
 #Create custom HTTPRequestHandler class
-class KodeFunHTTPRequestHandler(BaseHTTPRequestHandler):
+class DefaultHTTPRequestHandler(BaseHTTPRequestHandler):
     
     #handle GET command
     def do_GET(self):
-        rootdir = 'c:/xampp/htdocs/' #file location
+        rootdir = './' #file location
         try:
             if self.path.endswith('.html'):
                 f = open(rootdir + self.path) #open requested file
@@ -21,7 +21,7 @@ class KodeFunHTTPRequestHandler(BaseHTTPRequestHandler):
                 self.end_headers()
 
                 #send file content to client
-                self.wfile.write(f.read())
+                self.wfile.write(f.read().encode('utf-8'))
                 f.close()
                 return
             
@@ -33,8 +33,8 @@ def run():
 
     #ip and port of servr
     #by default http server port is 80
-    server_address = ('127.0.0.1', 80)
-    httpd = HTTPServer(server_address, KodeFunHTTPRequestHandler)
+    server_address = ('127.0.0.1', 8080)
+    httpd = HTTPServer(server_address, DefaultHTTPRequestHandler)
     print('http server is running...')
     httpd.serve_forever()
     
