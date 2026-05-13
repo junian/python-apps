@@ -1,7 +1,7 @@
 #!/usr/bin/env uv run
 
 # This code is based on tutorial by slicktechies modified as needed to use oauth token from Twitch.
-# You can read more details at: https://www.junian.net/dev/python-record-twitch/
+# You can read more details at: https://www.junian.dev/tech/python-record-twitch/
 # original code is from https://slicktechies.com/how-to-watchrecord-twitch-streams-using-livestreamer/
 
 import requests
